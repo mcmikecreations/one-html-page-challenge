@@ -1,0 +1,22 @@
+name: Custom deployment script
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Process the files
+      run: |
+        cd ${{ github.workspace }}/entries
+        find . ! -name 'mykola.html' -type f -exec rm -f {} +
+        mv ./mykola.html ./index.html
+        cd ..
+        git subtree push --prefix entries origin gh-pages
