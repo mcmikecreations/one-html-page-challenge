@@ -18,6 +18,7 @@ jobs:
         cd ${{ github.workspace }}/entries
         find . ! -name 'mykola.html' -type f -exec rm -f {} +
         mv ./mykola.html ./index.html
+        touch ./.nojekyll
         cd ..
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
