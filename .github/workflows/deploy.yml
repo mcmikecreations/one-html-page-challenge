@@ -24,4 +24,3 @@ jobs:
         git add *
         git commit -m "Deployed for ${{ github.sha }}"
         git push origin `git subtree split --prefix entries master`:gh-pages --force
-        git subtree push --prefix entries origin gh-pages
