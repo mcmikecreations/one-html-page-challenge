@@ -19,4 +19,6 @@ jobs:
         find . ! -name 'mykola.html' -type f -exec rm -f {} +
         mv ./mykola.html ./index.html
         cd ..
+        git add *
+        git commit -m "Deployed for ${{ github.sha }}"
         git subtree push --prefix entries origin gh-pages
